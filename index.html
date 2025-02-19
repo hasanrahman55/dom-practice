@@ -3,45 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>BMI Calculator</h1>
     <form id="form">
       <label for="weight">Your Weight in kg:</label>
-      <input type="text" name="weight" placeholder="weight" />
-      <label for="weight">your height in meter</label>
-      <input type="text" name="height" id="height" placeholder="height" />
-      <button type="submit" name="submit">Calculate</button>
+      <input
+        type="text"
+        name="weight"
+        placeholder="Enter your weight"
+        required
+      />
+
+      <label for="height">Your Height in meters:</label>
+      <input
+        type="text"
+        name="height"
+        id="height"
+        placeholder="Enter your height"
+        required
+      />
+
+      <button type="submit">Calculate</button>
     </form>
     <h2 id="result"></h2>
   </body>
-  <script>
-    document
-      .getElementById("form")
-      .addEventListener("submit", function (event) {
-        event.preventDefault();
-        const weight = document.querySelector("input[name=weight]").value;
-        const height = document.getElementById("height").value;
 
-        const bmi = weight / (height * height);
-        let comment = "";
-
-        if (bmi < 18.5) {
-          comment = "Underweight";
-        } else if (bmi < 25) {
-          comment = "Normal";
-        } else if (bmi < 30) {
-          comment = "Overweight";
-        } else {
-          comment = "Obese";
-        }
-
-        const result = document.getElementById("result");
-
-        result.innerHTML = `Your Body Mass Index is  ${bmi.toFixed(
-          2
-        )}.This is considered  ${comment}`;
-      });
-  </script>
+  <script src="script.js"></script>
 </html>
