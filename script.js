@@ -1,36 +1,39 @@
-document.getElementById("form").addEventListener("submit", function (event) {
-  event.preventDefault();
+//add task
+function attachDragsEvent(target) {
+  target.addEventListener("dragstart", function () {
+    target.classList.add("flying");
+  });
 
-  // Parse input values
-  const weight = parseFloat(document.querySelector("input[name=weight]").value);
-  const height = parseFloat(document.getElementById("height").value);
+  target.addEventListener("dragend", () => {
+    target.classList.remove("flying");
+  });
+}
 
-  // Validate inputs
-  if (isNaN(weight) || isNaN(height) || height <= 0) {
-    document.getElementById("result").innerText =
-      "Please enter valid numeric values.";
-    return;
-  }
+document.getElementById("addTask").addEventListener("click", function () {
+  let task = prompt("Enter your Task :");
+  if (!task) return;
 
-  // Calculate BMI
-  const bmi = weight / (height * height);
-  let comment = "";
+  const p = document.createElement("p");
+  p.innerHTML = task;
+  p.classList.add("task");
+  p.setAttribute("draggable", true);
 
-  // Determine BMI category
-  if (bmi < 18.5) {
-    comment = "Underweight";
-  } else if (bmi < 25) {
-    comment = "Normal";
-  } else if (bmi < 30) {
-    comment = "Overweight";
-  } else {
-    comment = "Obese";
-  }
+  attachDragsEvent(p);
 
-  // Display result
-  document.getElementById(
-    "result"
-  ).innerHTML = `Your Body Mass Index is <strong>${bmi.toFixed(
-    2
-  )}</strong>.<br>This is considered <strong>${comment}</strong>.`;
+  document.getElementById("todo").append(p);
+});
+
+const allBoard = document.querySelectorAll(".board");
+const allTask = document.querySelectorAll(".task");
+
+allTask.forEach(attachDragsEvent);
+
+allBoard.forEach((board) => {
+  board.addEventListener("dragover", function (e) {
+    const flyingElement = document.querySelector(".flying");
+
+    board.appendChild(flyingElement);
+
+    console.log(board, "kichu geche", flyingElement);
+  });
 });

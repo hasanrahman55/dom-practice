@@ -3,33 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BMI Calculator</title>
+    <title>Task Management</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>BMI Calculator</h1>
-    <form id="form">
-      <label for="weight">Your Weight in kg:</label>
-      <input
-        type="text"
-        name="weight"
-        placeholder="Enter your weight"
-        required
-      />
+    <div class="container">
+      <h1>Task Management</h1>
 
-      <label for="height">Your Height in meters:</label>
-      <input
-        type="text"
-        name="height"
-        id="height"
-        placeholder="Enter your height"
-        required
-      />
-
-      <button type="submit">Calculate</button>
-    </form>
-    <h2 id="result"></h2>
+      <div class="dragable-card">
+        <div id="todo" class="board">
+          <h2>Todo</h2>
+          <p class="task" draggable="true">Task 1</p>
+          <p class="task" draggable="true">Task 2</p>
+        </div>
+        <div id="inProgress" class="board">
+          <h2>In Progress</h2>
+        </div>
+        <div id="done" class="board">
+          <h2>Done</h2>
+        </div>
+      </div>
+      <button id="addTask" type="button">Add Task</button>
+    </div>
   </body>
-
   <script src="script.js"></script>
 </html>
