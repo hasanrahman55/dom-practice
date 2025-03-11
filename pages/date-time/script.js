@@ -9,7 +9,7 @@ function dateAndTime() {
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const seconds = date.getSeconds().toString().padStart(2, "0");
 
-  const ampm = date.getDate() > 12 ? "PM" : "AM";
+  const ampm = date.getDate() < 12 ? "PM" : "AM";
 
   timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
   dateElement.textContent = date.toLocaleDateString(undefined, {
@@ -19,5 +19,5 @@ function dateAndTime() {
     year: "numeric",
   });
 }
-
+dateAndTime();
 setInterval(dateAndTime, 1000);
