@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Countdown Timer</h1>
+      <input type="number" id="timeInput" placeholder="Enter seconds" />
+      <div id="countdownDisplay">00:00</div>
+      <div class="buttons">
+        <button onclick="startCountdown()" id="startButton">Start</button>
+        <button onclick="pauseCountdown()">Pause</button>
+        <button onclick="resetCountdown()">Reset</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let countdown;
+    let timeLeft;
+    let isPaused = false;
+
+    function startCountdown() {
+      const inputTime = document.querySelector("#timeInput").value;
+      if (!inputTime || inputTime <= 0) {
+        alert("Enter a valid number of seconds.");
+        return;
+      }
+
+      if (!isPaused) {
+        timeLeft = parseInt(inputTime);
+      }
+
+      countdown = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          displayCountdown(timeLeft);
+        } else {
+          clearInterval(countdown);
+          document.getElementById("countdownDisplay").textContent =
+            "Time's Up!";
+        }
+      }, 1000);
+    }
+
+    function pauseCountdown() {
+      isPaused = true;
+      console.log("befare", countdown);
+
+      clearInterval(countdown);
+      console.log("after", countdown);
+    }
+
+    function resetCountdown() {
+      clearInterval(countdown);
+      isPaused = false;
+      document.getElementById("countdownDisplay").textContent = "00:00";
+      document.querySelector("#timeInput").value = "";
+    }
+
+    function displayCountdown(leftTime) {
+      const minutes = Math.floor(timeLeft / 60);
+      const second = timeLeft % 60;
+      document.getElementById("countdownDisplay").textContent = `${String(
+        minutes
+      ).padStart(2, "0")}:${String(second).padStart(2, "0")}`;
+    }
+  </script>
+</html>
