@@ -1,0 +1,115 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px;
+  text-align: center;
+  width: 350px;
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+#timeInput {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 30px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#timeInput:focus {
+  border-color: #ff7e5f;
+  box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+}
+
+#countdownDisplay {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+  transition: color 0.3s ease;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 45%;
+  color: #fff;
+}
+
+#btn {
+  background-color: #28a745;
+}
+
+#btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+button:nth-child(2):hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+#countdownDisplay.TimeUp {
+  color: #dc3545;
+  font-size: 42px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #timeInput {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  #countdownDisplay {
+    font-size: 36px;
+  }
+}
