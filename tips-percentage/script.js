@@ -13,6 +13,6 @@ calculateBtn.addEventListener("click", function () {
   const totalTipAmount = (billValue * tipValue) / 100;
   const tipEach = totalTipAmount / numberOfPeopleValue;
 
-  totalTip.innerText = totalTipAmount;
-  tipPerPerson.innerText = tipEach;
+  totalTip.innerText = `$${totalTipAmount.toFixed(2)}`;
+  tipPerPerson.innerText = `$${tipEach.toFixed(2)}`;
 });

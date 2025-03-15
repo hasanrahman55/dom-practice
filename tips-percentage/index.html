@@ -3,26 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tips Percentage</title>
+    <title>Tip Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div class="container">
-      <h1>Tips Percentage</h1>
-      <input type="number" id="billAmount" placeholder="Enter Bill Amount" />
-      <input
-        type="number"
-        id="tipPercentage"
-        placeholder="Enter Tip Percentage"
-      />
-      <input
-        type="number"
-        id="numberOfPeople"
-        placeholder="Enter Number of People"
-      />
-      <button id="calculateBtn">Calculate Tip</button>
-      <p id="totalTip"></p>
-      <p id="tipPerPerson"></p>
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+      <h1 class="text-2xl font-bold text-center mb-4">Tip Calculator 💰</h1>
+
+      <div class="space-y-3">
+        <input
+          type="number"
+          id="billAmount"
+          placeholder="Enter Bill Amount"
+          class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+        />
+        <input
+          type="number"
+          id="tipPercentage"
+          placeholder="Enter Tip Percentage"
+          class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+        />
+        <input
+          type="number"
+          id="numberOfPeople"
+          placeholder="Enter Number of People"
+          class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+        />
+        <button
+          id="calculateBtn"
+          class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+        >
+          Calculate Tip
+        </button>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p class="text-lg font-semibold">💵 Total Tip: <span id="totalTip" class="text-blue-600">0.00</span></p>
+        <p class="text-lg font-semibold">👥 Tip per Person: <span id="tipPerPerson" class="text-blue-600">0.00</span></p>
+      </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
