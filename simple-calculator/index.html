@@ -3,64 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Calculator</title>
+    <title>Dark Mode Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .calc-btn {
+        background: linear-gradient(135deg, #4a90e2, #007aff);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 122, 255, 0.5);
+        transition: all 0.3s ease-in-out;
+      }
+      .calc-btn:hover {
+        background: linear-gradient(135deg, #007aff, #4a90e2);
+        transform: scale(1.1);
+        box-shadow: 0px 6px 15px rgba(0, 122, 255, 0.7);
+      }
+      .calc-btn:active {
+        transform: scale(0.95);
+      }
+    </style>
   </head>
-  <body>
-    <h1>Simple Calculator</h1>
-    <input type="number" id="num1" placeholder="Enter Number 1" />
-    <input type="number" id="num2" placeholder="Enter Number 2" />
-    <button data-operator="+">Add</button>
-    <button data-operator="-">Subtract</button>
-    <button data-operator="*">Multiply</button>
-    <button data-operator="/">Divide</button>
-    <p id="result"></p>
+  <body class="bg-gray-900 flex items-center justify-center h-screen">
+    <div
+      class="bg-gray-800 p-8 rounded-xl shadow-lg max-w-sm w-full text-center border border-gray-700"
+    >
+      <h1 class="text-3xl font-bold text-white mb-6">Calculator</h1>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const num1Input = document.getElementById("num1");
-        const num2Input = document.getElementById("num2");
-        const resultElement = document.getElementById("result");
-        const btn = document.querySelectorAll("button");
+      <input
+        type="number"
+        id="num1"
+        placeholder="Enter Number 1"
+        class="w-full p-3 mb-3 bg-gray-700 text-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <input
+        type="number"
+        id="num2"
+        placeholder="Enter Number 2"
+        class="w-full p-3 mb-5 bg-gray-700 text-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
 
-        btn.forEach((button) => {
-          button.addEventListener("click", () => {
-            const operator = button.getAttribute("data-operator");
-            calculate(operator);
-          });
-        });
+      <div class="grid grid-cols-2 gap-4">
+        <button data-operator="+" class="calc-btn">+</button>
+        <button data-operator="-" class="calc-btn">−</button>
+        <button data-operator="*" class="calc-btn">×</button>
+        <button data-operator="/" class="calc-btn">÷</button>
+      </div>
 
-        function calculate(operator) {
-          const num1 = parseFloat(num1Input.value);
-          const num2 = parseFloat(num2Input.value);
+      <p id="result" class="text-2xl font-semibold text-white mt-5"></p>
+    </div>
 
-          if (isNaN(num1) || isNaN(num2)) {
-            resultElement.textContent = "please Enter num1 & num2";
-            return;
-          }
-
-          switch (operator) {
-            case "+":
-              resultElement.textContent = num1 + num2;
-              break;
-            case "-":
-              resultElement.textContent = num1 - num2;
-              break;
-            case "*":
-              resultElement.textContent = num1 * num2;
-              break;
-            case "/":
-              if (num2 === 0) {
-                resultElement.textContent = "Cannot divide by zero";
-                return;
-              }
-              resultElement.textContent = num1 / num2;
-              break;
-            default:
-              resultElement.textContent = "Invalid Operator";
-              break;
-          }
-        }
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
