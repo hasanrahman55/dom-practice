@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+  </head>
+  <body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="num1" placeholder="Enter Number 1" />
+    <input type="number" id="num2" placeholder="Enter Number 2" />
+    <button data-operator="+">Add</button>
+    <button data-operator="-">Subtract</button>
+    <button data-operator="*">Multiply</button>
+    <button data-operator="/">Divide</button>
+    <p id="result"></p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const num1Input = document.getElementById("num1");
+        const num2Input = document.getElementById("num2");
+        const resultElement = document.getElementById("result");
+        const btn = document.querySelectorAll("button");
+
+        btn.forEach((button) => {
+          button.addEventListener("click", () => {
+            const operator = button.getAttribute("data-operator");
+            calculate(operator);
+          });
+        });
+
+        function calculate(operator) {
+          const num1 = parseFloat(num1Input.value);
+          const num2 = parseFloat(num2Input.value);
+
+          if (isNaN(num1) || isNaN(num2)) {
+            resultElement.textContent = "please Enter num1 & num2";
+            return;
+          }
+
+          switch (operator) {
+            case "+":
+              resultElement.textContent = num1 + num2;
+              break;
+            case "-":
+              resultElement.textContent = num1 - num2;
+              break;
+            case "*":
+              resultElement.textContent = num1 * num2;
+              break;
+            case "/":
+              if (num2 === 0) {
+                resultElement.textContent = "Cannot divide by zero";
+                return;
+              }
+              resultElement.textContent = num1 / num2;
+              break;
+            default:
+              resultElement.textContent = "Invalid Operator";
+              break;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
