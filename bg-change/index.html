@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Background Color</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="flex items-center justify-center min-h-screen transition-all duration-500"
+  >
+    <button
+      id="btn"
+      class="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 active:scale-95 transition-all"
+    >
+      Click to Change Background
+    </button>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", () => {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+
+        document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
+      });
+    </script>
+  </body>
+</html>
